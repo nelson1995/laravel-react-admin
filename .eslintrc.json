@@ -1,0 +1,78 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "wesbos",
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["CardOne.jsx","CardTwo.jsx","CardThree.jsx","CardFour.jsx"],
+    "rules":{
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": false,
+                "endOfLine": "auto",
+                "tabWidth": 4
+            }
+        ],
+        "quotes": ["error","double"],
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/require-default-props": [
+            "error",
+            {
+                "forbidDefaultForRequired": true,
+                "functions": "defaultArguments"
+            }
+        ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {"devDependencies": true}
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "jsconfig": {
+                "config": "jsconfig.json",
+                "extensions": [".js", ".jsx"]
+            }
+        }
+    }
+    // "settings": {
+    //     "import/resolver": {
+    //         "alias": {
+    //             "map": [
+    //                 ["@","node_modules"],
+    //                 ["components","resources/js/Components/*"]
+    //             ],
+    //             "extensions": [".js", ".jsx"]
+    //         }
+    //     }
+    // }
+    // "rules": {
+    //     "react/jsx-uses-react": "off",
+    //     "react/react-in-jsx-scope": "off",
+    //     "react/require-default-props": [
+    //         "error",
+    //         {
+    //             "forbidDefaultForRequired": true,
+    //             "functions": "defaultArguments"
+    //         }
+    //     ],
+    //     "import/extensions":[ 
+    //         "error",
+    //         "ignorePackages",
+    //         {
+    //             "js":"never",
+    //             "jsx":"never"
+    //         }
+    //     ]
+    // }
+}
