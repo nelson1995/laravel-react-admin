@@ -41,7 +41,7 @@ class ApiController extends Controller
 
     public function loginWithApiToken(Request $request)
     {
-        $data = decryptApiToken($request['api_token']);
+        $data = decryptApiToken($request['apiToken']);
         $user = User::query()->where('email',$data)->first();
 
         if(!$user){

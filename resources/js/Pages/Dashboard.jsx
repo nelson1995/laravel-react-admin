@@ -14,47 +14,6 @@ import Table from "@/Components/Table";
 
 export default function Dashboard(props) {
     const { user } = props.auth;
-    const [users, setUsers] = useState([]);
-    const [error, setError] = useState(null);
-
-    const getUsers = async (token) => {
-        await axios
-            .get("/api/v1/users", {
-                headers: { Authorization: `Bearer ${token}` },
-            })
-            .then((response) => {
-                setUsers(response.data);
-            })
-            .catch((error) => setError(error));
-    };
-
-    const authUser = async () => {
-        await axios
-            .post(
-                "/api/v1/login-with-api-token",
-                {
-                    api_token: user.api_token,
-                },
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                }
-            )
-            .then((response) => {
-                getUsers(response.data.access_token);
-            })
-            .catch((error) => setError(error));
-    };
-
-    useEffect(() => {
-        authUser();
-    }, []);
-
-    if (error) return `Error: ${error}`;
-    if (users.length < 1) return [];
-
-    console.log("users => ", users);
 
     return (
         <AuthenticatedLayout
@@ -90,7 +49,7 @@ export default function Dashboard(props) {
                 </Row>
                 <Row>
                     <Col>
-                        <Table users={users} />
+                        <Table user={user} />
                     </Col>
                 </Row>
             </Container>
