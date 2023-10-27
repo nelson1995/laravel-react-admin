@@ -16,7 +16,7 @@ class ApiController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|string',
-            'password' => 'required|confirmed'
+            'password' => 'required'
         ]); 
 
         if($validator->fails()){
@@ -67,6 +67,7 @@ class ApiController extends Controller
 
         $request['password'] = Hash::make($request->password);
         $request['remember_token'] = Str::random(10);
+        $request['api_token'] = generateApiToken($request['email']);
         $user = User::create($request->toArray());
         $token = $user->createToken('Personal Access Client')->accessToken;
 

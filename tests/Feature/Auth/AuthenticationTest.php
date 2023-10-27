@@ -21,9 +21,9 @@ test('users can authenticate using the login screen', function () {
     $response->assertRedirect(RouteServiceProvider::HOME);
 });
 
-test('users can not authenticate with invalid password', function () {
+test('users cannot authenticate with invalid password', function () {
     $user = User::factory()->create();
-
+    
     $this->post('/login', [
         'email' => $user->email,
         'password' => 'wrong-password',

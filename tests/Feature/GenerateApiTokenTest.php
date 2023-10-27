@@ -1,20 +1,20 @@
 <?php
 
-namespace Tests\Feature;
+test('api token is generated', function(){
+    $data = "nelson@mail.com";
+    $apiToken;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+    $apiToken = generateApiToken($data);
 
-class GenerateApiTokenTest extends TestCase
-{
-    public $data = "nelson@mail.com";
-    public $apiToken;
-    
-    public function test_decrypt_api_token()
-    {
-        $this->apiToken = generateApiToken($this->data);
-        $decryptedData = decryptApiToken($this->apiToken);
-        $this->assertEquals($this->data, $decryptedData);
-    }
-}
+    // $this->assert
+});
+
+test('api token can be decrypted', function(){
+    $data = "nelson@mail.com";
+    $apiToken;
+
+    $apiToken = generateApiToken($data);
+    $decryptedData = decryptApiToken($apiToken);
+
+    $this->assertEquals($data, $decryptedData);
+});
